@@ -11,21 +11,18 @@ app = Flask(__name__)
 MODEL_PATH =  os.path.join(os.path.dirname(__file__), 'model_v1.h5')
 model = load_model(MODEL_PATH)
 
-# Define image preprocessing function
 def preprocess_image(image):
-    # Convert image to grayscale
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    
     # Resize image to the required input size for the model
-    resized_image = cv2.resize(gray, (224, 224))  # Assuming 128x128 is the input size required by the model
+    resized_image = cv2.resize(image, (224, 224))  # No color channel change
     
     # Normalize pixel values between 0 and 1
     normalized_image = resized_image / 255.0
     
-    # Expand dimensions to match model input shape (1, 128, 128, 1) for grayscale image
-    input_image = np.expand_dims(normalized_image, axis=(0, -1))
-    
+    # Expand dimensions to match model input shape (1, 224, 224, 3)
+    input_image = np.expand_dims(normalized_image, axis=0)  # No extra channel dimension
+
     return input_image
+
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -48,7 +45,7 @@ def predict():
     
     # Get the predicted class (assuming binary classification: 0 - No Tumor, 1 - Tumor)
     predicted_class = np.argmax(prediction, axis=1)[0]
-    
+    print(predicted_class)
     # Return the prediction result
     if predicted_class == 0:
         result = "No Tumor"
