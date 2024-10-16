@@ -17,7 +17,7 @@ def preprocess_image(image):
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     
     # Resize image to the required input size for the model
-    resized_image = cv2.resize(gray, (224, 224, 3))  # Assuming 128x128 is the input size required by the model
+    resized_image = cv2.resize(gray, (224, 224))  # Assuming 128x128 is the input size required by the model
     
     # Normalize pixel values between 0 and 1
     normalized_image = resized_image / 255.0
