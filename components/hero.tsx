@@ -10,7 +10,8 @@ export default function Hero() {
       text: "Brain Tumor",
     },
     {
-      text: "97% ",
+      text: "95% ",
+      className: "text-blue-500 dark:text-blue-500",
     },
     {
       text: "accurately",
@@ -28,16 +29,17 @@ export default function Hero() {
       text: "of",
     },
     {
-      text: "CNN",
-      className: "text-blue-500 dark:text-blue-500",
+      text: "MobileNet",
+      // className: "text-blue-500 dark:text-blue-500",
     },
   ];
   return (
-    <div className="flex flex-col items-center justify-center h-[40rem] ">
-      <p className="text-neutral-600 dark:text-neutral-200 text-base  mb-10">
-        CNN's Brain Tumor Prediction
-      </p>
-      <TypewriterEffect words={words} />
+    <div className="flex flex-col items-center justify-center h-[40rem] leading-
+    ">
+      
+      <TypewriterEffect words={words}
+      className="leading-8"
+       />
     </div>
   );
 }

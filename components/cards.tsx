@@ -28,7 +28,7 @@ export default function Card({
           alt="brain"
           width={300}
           height={300}
-          className={`object-cover object-center w-48 h-48 rounded-full border-4 border-gray-200 dark:border-gray-600 shadow-lg transform transition-transform duration-300 
+          className={`object-cover object-center w-48 h-48 rounded-full border-4 grayscale border-gray-200 dark:border-gray-600 shadow-lg transform transition-transform duration-300 
             ${isHovered && "scale-105"}`}
         />
         <div className="p-6 text-center">

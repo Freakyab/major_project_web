@@ -27,14 +27,17 @@ const secondaryVariant = {
 
 export const FileUpload = ({
   onChange,
+  fileInputRef
 }: {
   onChange?: (files: File[]) => void;
+  fileInputRef : React.RefObject<HTMLInputElement>;
 }) => {
   const [files, setFiles] = useState<File[]>([]);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  // const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (newFiles: File[]) => {
-    setFiles((prevFiles) => [...prevFiles, ...newFiles]);
+    // setFiles((prevFiles) => [...prevFiles, ...newFiles]);
+    setFiles(newFiles);
     onChange && onChange(newFiles);
   };
 
@@ -52,7 +55,7 @@ export const FileUpload = ({
   });
 
   return (
-    <div className="w-full" {...getRootProps()}>
+    <div className="w-[500px]" {...getRootProps()}>
       <motion.div
         onClick={handleClick}
         whileHover="animate"
